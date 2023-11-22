@@ -2,6 +2,7 @@
   "name": "uni-preset-vue",
   "version": "0.0.0",
   "scripts": {
+    "dev": "uni -p mp-weixin",
     "dev:app": "uni -p app",
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
@@ -15,7 +16,6 @@
     "dev:mp-lark": "uni -p mp-lark",
     "dev:mp-qq": "uni -p mp-qq",
     "dev:mp-toutiao": "uni -p mp-toutiao",
-    "dev:mp-weixin": "uni -p mp-weixin",
     "dev:quickapp-webview": "uni -p quickapp-webview",
     "dev:quickapp-webview-huawei": "uni -p quickapp-webview-huawei",
     "dev:quickapp-webview-union": "uni -p quickapp-webview-union",

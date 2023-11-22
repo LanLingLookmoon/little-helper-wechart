@@ -13,7 +13,7 @@
     "minified": true,
     "enhance": true,
     "showShadowRootInWxmlPanel": true,
-    "ignoreDevUnusedFiles": false, 
+    "ignoreDevUnusedFiles": false,
     "ignoreUploadUnusedFiles": false,
     "packNpmRelationList": [],
     "babelSetting": {
