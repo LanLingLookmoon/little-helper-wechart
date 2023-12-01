@@ -1,15 +1,14 @@
 import type { RequestParams, DataObject } from './config'
 import { HOST } from './config'
 
-const token = wx.getStorageSync('token')
-
 function request({ url, data = {}, method = 'GET', header = {} }: RequestParams) { 
     return new Promise((resolve, reject) => {
         wx.request({
             url: HOST + url,
             data,
             method,
-            header,
+            responseType: !header.needArraybuffer ? "text" : "arraybuffer",
+            header: !wx.getStorageSync('token') ? header : {token:wx.getStorageSync('token'), ...header},
             success:({statusCode, data}: {statusCode: number, data: DataObject}) => {
                 if (statusCode === 401) {
                     setTimeout(() => {
@@ -60,7 +59,7 @@ function request({ url, data = {}, method = 'GET', header = {} }: RequestParams)
 }
 
 function upload(url: string, filePath: string, name = 'file', formData = {}, timeout = 60000) {
-    // 返回一个 Pormise ，使其支持 Promise 调用
+  // 返回一个 Pormise ，使其支持 Promise 调用
     return new Promise((resolve, reject) => {
       wx.uploadFile({
         url: HOST + url,
@@ -70,7 +69,7 @@ function upload(url: string, filePath: string, name = 'file', formData = {}, tim
         header: {
           // 上传接口必传 token ，后端会校验该值是否合法
           // 注意 Bearer 后有一个空格
-          token: token
+          token: wx.getStorageSync('token')
         },
         timeout,
         success: ({ data }) => {
